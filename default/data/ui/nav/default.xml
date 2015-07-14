@@ -1,0 +1,30 @@
+<nav search_view="search" color="#3399fe">
+    <!-- Working Dashboards -->	
+    <collection label="Akamai Dashboards">
+    <divider />
+      <view name="akamai_overview" />
+      <view name="ssl_versions" />
+      <divider />
+      <view name="API_Overview" />
+      <divider />
+      <view name="business_intelligence" />
+      <divider />
+      <view name="Edge_Explorer" />
+      <view name="Explorer" />
+      <divider />
+      <view name="operation_overview" />
+      <view name="operations__latency" />
+      <divider />
+      <view name="Status_Explorer" />
+      <divider />
+      <view name="WWW_Overview" />
+      <divider />
+    </collection>
+  <view name="search" default='true' />
+  <view name="data_models" />
+  <view name="reports" />
+  <view name="alerts" />
+  <view name="dashboards" />
+</nav>
+
+

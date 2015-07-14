@@ -1,0 +1,241 @@
+<form script="autodiscover.js">
+  <label>WWW Explorer</label>
+  <search>
+    <seed>index=akamai network.edgeIP=$edgeIP$ |</seed>
+  </search>
+  <fieldset autoRun="true">
+    <!-- submitButton="false" autoRun="true" -->
+    <input type="dropdown" token="URL" searchWhenChanged="true">
+      <label>Select Site</label>
+      <search>
+        <query>index=akamai  | dedup message.reqHost | stats count by message.reqHost</query>
+        <earliest>0</earliest>
+      </search>
+      <choice value="*">Any</choice>
+      <fieldForLabel>message.reqHost</fieldForLabel>
+      <fieldForValue>message.reqHost</fieldForValue>
+      <default>*</default>
+    </input>
+    <input type="dropdown" token="edgeIP" searchWhenChanged="true">
+      <label>Select series</label>
+      <search>
+        <query>index=akamai  | dedup network.edgeIP | stats count by network.edgeIP</query>
+        <earliest>0</earliest>
+      </search>
+      <choice value="*">Any</choice>
+      <fieldForLabel>network.edgeIP</fieldForLabel>
+      <fieldForValue>network.edgeIP</fieldForValue>
+      <default>*</default>
+    </input>
+    <input type="time" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliestTime>-7d@d</earliestTime>
+        <latestTime>now</latestTime>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Status</title>
+      <chart>
+        <title>Status</title>
+        <search>
+          <query>index=akamai network.edgeIP=$edgeIP$ message.reqHost=$URL$ | timechart count by message.status</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Errors by country</title>
+        <search>
+          <query>index=akamai network.edgeIP=* cp=113982 message.status&gt;"399" message.reqHost=$URL$ | chart count as Errors by geo.country, message.reqHost</query>
+          <earliest>0</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Cache Status</title>
+        <search>
+          <query>index=akamai network.edgeIP=$edgeIP$ message.reqHost=$URL$ | stats count by netPerf.cacheStatus</query>
+          <earliest>0</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Download Times</title>
+        <search>
+          <query>index=akamai network.edgeIP=$edgeIP$ message.reqHost=$URL$ |  stats max(netPerf.downloadTime) as "Maximum Download Time" avg(netPerf.downloadTime) as "Average Download Time" min(netPerf.downloadTime) as "Minimum Download Time"</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Round Trip Times</title>
+        <search>
+          <query>index=akamai network.edgeIP=$edgeIP$ message.reqHost=$URL$ | stats max(netPerf.lastMileRTT) as "Maximum RTT" avg(netPerf.lastMileRTT) as "Average RTT" min(netPerf.lastMileRTT) as "Minimum RTT"</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Origin Latency</title>
+        <search>
+          <query>index=akamai network.edgeIP=$edgeIP$ message.reqHost=$URL$ | stats max(netPerf.netOriginLatency) as "Max Origin Latency" avg(netPerf.netOriginLatency) as "Avg Origin Latency" min(netPerf.netOriginLatency) as "Min Origin Latency"</query>
+          <earliest>0</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <map>
+        <title>Request by Geo</title>
+        <search>
+          <query>index=akamai network.edgeIP=$edgeIP$ message.reqHost=$URL$ | geostats latfield=geo.lat longfield=geo.long count by geo.city</query>
+        </search>
+        <option name="mapping.data.maxClusters">100</option>
+        <option name="mapping.map.center">(0,0)</option>
+        <option name="mapping.map.zoom">2</option>
+        <option name="mapping.markerLayer.markerMaxSize">50</option>
+        <option name="mapping.markerLayer.markerMinSize">10</option>
+        <option name="mapping.markerLayer.markerOpacity">0.8</option>
+        <option name="mapping.tileLayer.maxZoom">7</option>
+        <option name="mapping.tileLayer.minZoom">0</option>
+        <option name="drilldown">all</option>
+      </map>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Slowest Pages</title>
+        <search>
+          <query>index=akamai network.edgeIP=* cp=113982 message.reqHost=$URL$ | eval URL='message.reqHost'."".urldecode('message.reqPath')| stats avg(netPerf.lastMileRTT) as Avg min(netPerf.lastMileRTT) as Fastest max(netPerf.lastMileRTT) as Slowest by URL | Table Slowest URL | sort - Slowest | head 10</query>
+          <earliest>0</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Fastest Pages</title>
+        <search>
+          <query>index=akamai network.edgeIP=* cp=113982 message.reqHost=$URL$  | eval URL='message.reqHost'."".urldecode('message.reqPath')| stats avg(netPerf.lastMileRTT) as Avg min(netPerf.lastMileRTT) as Fastest max(netPerf.lastMileRTT) as Slowest by URL | Table Fastest URL | sort Fastest | head 10</query>
+          <earliest>0</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Errant Click Through</title>
+        <search>
+          <query>index=akamai message.reqHost=$URL$| bucket _time span=1d |eval page='message.reqHost'."".urldecode('message.reqPath') | eval status='message.status' | eval client_id='message.cliIP' | streamstats current=f last(page) as next_page last(status) as next_status by client_id | where next_status&gt;"300" AND status&lt;"300" |stats count(next_page) as count by page next_page | sort - count</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</form>

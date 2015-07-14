@@ -1,0 +1,5 @@
+netPerf.cacheStatus,cache_def
+0,Non-cacheable request per content rules
+1,Cache hit (1)
+2,Cache hit (2)
+3,Content is cacheable but was not cached

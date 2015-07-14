@@ -1,0 +1,208 @@
+[app/ui]
+version = 6.2.0
+modtime = 1418926882.291401000
+
+[app/launcher]
+version = 6.2.0
+modtime = 1418926882.292709000
+
+[views/business_intelligence]
+owner = admin
+version = 6.2.1
+modtime = 1430404711.752480000
+
+[nav/default]
+version = 6.2.1
+modtime = 1430334830.094935000
+
+[views/Edge_Explorer]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430333830.710246000
+
+[views/Status_Explorer]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430333899.489982000
+
+[views/operations__latency]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1431009920.823811000
+
+[views/operation_overview]
+owner = admin
+version = 6.2.1
+modtime = 1430322720.150708000
+
+[indexes/networksummary]
+owner = admin
+version = 6.2.0
+modtime = 1423513366.989262000
+
+[transforms/ua_values]
+version = 6.2.0
+modtime = 1424799022.401575000
+
+[views/API_Overview]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1431036256.962191000
+
+[views/Explorer]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430334427.003695000
+
+[views/Security_Overview]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.0
+modtime = 1429719725.156527000
+
+[views/WWW_Overview]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430333948.128736000
+
+[views/beta]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430322313.542844000
+
+[views/url_explorer]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430322894.559193000
+
+[views/user_agents]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.0
+modtime = 1429719755.422632000
+
+[views/user_analysis]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.0
+modtime = 1429719762.385183000
+
+[app/install/install_source_checksum]
+version = 6.2.3
+modtime = 1436899194.023942000
+
+[views/akamai_overview]
+access = read : [ * ], write : [ * ]
+export = none
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1431009347.389687000
+
+[views/ssl_versions]
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1430403989.091073000
+
+[savedsearches/Average%2C%20Median%2C%20and%2090th%20Percentile]
+access = read : [ * ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430338917.267149000
+
+[savedsearches/Bytes%20and%20Cookies%20per%20Edge%20IP]
+access = read : [ admin, power, user ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430338931.589133000
+
+[savedsearches/DDOS%20Watch]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430338952.901746000
+
+[savedsearches/IP%20Location%20of%20Get%20Requests%20by%20Session]
+access = read : [ * ]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430338965.744660000
+
+[savedsearches/Requested%20Paths]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430338977.880734000
+
+[savedsearches/Requests%20by%20Response%20Time]
+export = none
+owner = admin
+version = 6.2.1
+modtime = 1430338989.488239000
+
+[transforms/cache_def]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1430499753.037999000
+
+[lookups/cache_def.csv]
+access = read : [ * ], write : [ * ]
+export = system
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1430499733.010519000
+
+[props/json/LOOKUP-cache_def]
+access = read : [ * ], write : [ * ]
+export = system
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1430499936.397734000
+
+[lookups/http_status_codes.csv]
+access = read : [ * ], write : [ * ]
+export = system
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1430510300.322226000
+
+[transforms/http_status_codes]
+access = read : [ * ], write : [ * ]
+export = system
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1430510376.872004000
+
+[props/Akamai_TA/LOOKUP-UA_Values]
+access = read : [ * ], write : [ admin, power ]
+owner = nobody
+version = 6.2.1
+modtime = 1430510667.265915000
+
+[views/sql_injection]
+owner = jdonn@splunk.com
+version = 6.2.1
+modtime = 1431116321.626641000

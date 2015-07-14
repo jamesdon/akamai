@@ -1,0 +1,32 @@
+<form>
+  <label>Status Explorer</label>
+  <searchTemplate>index=akamai network.edgeIP=$edgeIP$</searchTemplate>
+  <fieldset>
+    <input type="dropdown" token="edgeIP">
+      <label>Select series</label>
+      <search>
+        <query>index=akamai | dedup network.edgeIP | fields network.edgeIP</query>
+      </search>
+      <choice value="*">Any</choice>
+      <fieldForLabel>network.edgeIP</fieldForLabel>
+      <fieldForValue>network.edgeIP</fieldForValue>
+      <default>*</default>
+    </input>
+    <!-- submitButton="false" autoRun="true" -->
+    <input type="time" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliestTime>-7d@d</earliestTime>
+        <latestTime>now</latestTime>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <title>Events by Edge</title>
+        <searchPostProcess>| stats count</searchPostProcess>
+      </table>
+    </panel>
+  </row>
+</form>
